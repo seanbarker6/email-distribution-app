@@ -5,5 +5,7 @@ const userSchema = new Schema({
 	googleId: String
 });
 
-// create model class for mongoose
+// create model class for mongoose. //Mongoose.model tells mongoose to create a new model class instance(mongoose)
+// and therefore new collection(mongoDB) in MongoDB.
+//However, if already created it wont delete it and remake it.
 mongoose.model('users', userSchema);

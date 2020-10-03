@@ -5,6 +5,7 @@ const passport = require("passport");
 const keys = require("./config/keys");
 const bodyParser = require("body-parser");
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 //connect mongoose to the port our mongo database is running on (we specified this in heroku)
@@ -33,6 +34,7 @@ app.use(bodyParser.json());
 //import the function and immediately pass app as argument
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 //if we are on heroku run this
 if (process.env.NODE_ENV === "production") {
@@ -44,11 +46,11 @@ if (process.env.NODE_ENV === "production") {
   //uploaded to heroku to see if theres a file matching
   //the requested route
   app.use(express.static("client/build"));
-	//if doesnt find anything specific here then run code below.
+  //if doesnt find anything specific here then run code below.
   // Code below: express will serve up the index.html file
   // if it doesn't recognize the route
   const path = require("path");
-	//define route handler
+  //define route handler
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });

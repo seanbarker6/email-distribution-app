@@ -1,3 +1,4 @@
+// THIS FILE USED TO CREATE MONGOOSE MODEL CLASS
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
